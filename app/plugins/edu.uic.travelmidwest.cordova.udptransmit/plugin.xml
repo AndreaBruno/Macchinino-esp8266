@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="edu.uic.travelmidwest.cordova.udptransmit" version="1.0.8">
+	
+	<!-- Metadata ================================================================== -->
+
+    <name>UDPTransmit</name>
+    <description>UDP Plugin which supports UDP API</description>
+    <license>Apache 2.0</license>
+    <keywords>UDP,udp</keywords>
+	
+    <!-- The common JavaScript file for all mobile platforms ======================= -->
+
+	<js-module src="www/udptransmit.js" name="udptransmit">
+		<merges target="udptransmit"/>
+    </js-module>
+	
+	<!-- iOS-specific Objective-C source code ====================================== -->
+
+	<platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="UDPTransmit">
+                <param name="ios-package" value="UDPTransmit"/>
+            </feature>
+        </config-file>
+        <header-file src="src/ios/UDPTransmit.h" />
+        <source-file src="src/ios/UDPTransmit.m" />
+	</platform>
+	
+	<!-- Android-specific Java source code ========================================= -->
+	
+	<platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <!-- This is the name used for service name in cordova.exec -->
+            <feature name="UDPTransmit" >
+                <!-- This tells cordova which java class to load for this plugin -->
+                <param name="android-package" value="edu.uic.udptransmit.UDPTransmit"/>
+            </feature>
+        </config-file>
+		<source-file src="src/android/UDPTransmit.java" target-dir="src/edu/uic/udptransmit/" />
+    </platform>
+
+	<!-- =========================================================================== -->
+
+</plugin>

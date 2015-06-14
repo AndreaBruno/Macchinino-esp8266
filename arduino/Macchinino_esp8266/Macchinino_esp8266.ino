@@ -1,35 +1,33 @@
-
-/* Create a WiFi access point and provide a web server on it. */
-
 #include <ESP8266WiFi.h>
-//#include <WiFiClient.h>
-//#include <ESP8266WebServer.h>
 #include <Ticker.h>
 #include "myServo.h"
-
 #include <WiFiUdp.h>
 
-#define servopin 12
+#define LOCALPORT 5000
+#define ACC_PIN 13
+#define DIR_PIN 12
+
+#define ACC_MAX 150
+#define ACC_MID 90
+#define ACC_MIN 50
+#define DIR_MAX 138
+#define DIR_MID 98
+#define DIR_MIN 58
 
 int status = WL_IDLE_STATUS;
 const char *ssid = "ESPap";
 const char *password = "thereisnospoon";
 
-Servo servo;
+Servo accServo;
+Servo dirServo;
 
-//WiFiServer server(80);
 WiFiUDP Udp;
-unsigned int localPort = 5000;
 char packetBuffer[255];
 
 void setup() {
-  delay(1000);
+  delay(5000);
   Serial.begin(115200);
   delay(10);
-
-  servo.attach(servopin);
-  servo.write(90);
-
   Serial.println();
   Serial.print("Configuring access point...");
   WiFi.softAP(ssid, password);
@@ -44,9 +42,13 @@ void setup() {
   Serial.print("AP IP address: ");
   Serial.println(myIP);
 
-  //server.begin();
-  //Serial.println("HTTP server started");
-  Udp.begin(localPort);
+  accServo.attach(ACC_PIN);
+  accServo.write(ACC_MID);
+  dirServo.attach(DIR_PIN);
+  dirServo.write(DIR_MID);
+
+
+  Udp.begin(LOCALPORT);
 }
 
 void loop() {
@@ -66,7 +68,19 @@ void loop() {
     if (len > 0) packetBuffer[len] = 0;
     Serial.println("Contents:");
     Serial.println(packetBuffer);
-    
-    
+
+    if (packetBuffer[0] == 'A') {
+      int num = (int)packetBuffer[1] - 48;
+      num = map(num, 0, 9, ACC_MIN, ACC_MAX);
+      accServo.write(num);
+      delay(15);
+    }
+
+    if (packetBuffer[2] == 'D') {
+      int num = (int)packetBuffer[3] - 48;
+      num = map(num, 0, 9, DIR_MIN, DIR_MAX);
+      dirServo.write(num);
+      delay(15);
+    }
   }
 }

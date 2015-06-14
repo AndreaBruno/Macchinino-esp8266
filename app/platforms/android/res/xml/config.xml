@@ -19,6 +19,11 @@
     <feature name="UDPTransmit">
         <param name="android-package" value="edu.uic.udptransmit.UDPTransmit" />
     </feature>
+    <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
+    <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
+    <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />
+    <icon density="xxhdpi" src="resources/android/icon/drawable-xxhdpi-icon.png" />
+    <icon density="xxxhdpi" src="resources/android/icon/drawable-xxxhdpi-icon.png" />
     <splash density="land-ldpi" src="resources/android/splash/drawable-land-ldpi-screen.png" />
     <splash density="land-mdpi" src="resources/android/splash/drawable-land-mdpi-screen.png" />
     <splash density="land-hdpi" src="resources/android/splash/drawable-land-hdpi-screen.png" />
@@ -31,11 +36,6 @@
     <splash density="port-xhdpi" src="resources/android/splash/drawable-port-xhdpi-screen.png" />
     <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
     <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
-    <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
-    <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
-    <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />
-    <icon density="xxhdpi" src="resources/android/icon/drawable-xxhdpi-icon.png" />
-    <icon density="xxxhdpi" src="resources/android/icon/drawable-xxxhdpi-icon.png" />
     <name>Macchinino</name>
     <description>
         An Ionic Framework and Cordova project.

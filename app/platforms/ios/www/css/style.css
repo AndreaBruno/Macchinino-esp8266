@@ -1,1 +1,29 @@
-/* Empty. Add your own CSS if you like */
+#imgHeader {
+    width: 180px;
+    vertical-align: middle;
+}
+
+.homerow {
+    padding: 0px;
+    margin-top: 0px !important;
+}
+
+.col {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+.button-gas {
+    width: 90%;
+    height: 90%;
+    margin: 5%;
+    border: 2px solid;
+    border-radius: 25px;
+}
+
+#allcontent
+{
+	background: url('../img/sfondo.png') center center no-repeat;
+	background-color: #E1E1E3;
+}
